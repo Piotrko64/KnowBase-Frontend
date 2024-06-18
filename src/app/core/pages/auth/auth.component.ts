@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
+import { LoginPanelComponent } from './components/login-panel/login-panel.component';
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [],
+  imports: [LoginPanelComponent],
   templateUrl: './auth.component.html',
-  styleUrl: './auth.component.scss'
 })
-export class AuthComponent {
-
-}
+export class AuthComponent {}
