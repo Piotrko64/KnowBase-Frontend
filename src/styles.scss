@@ -4,15 +4,27 @@
 
 @layer base {
   h2 {
-    @apply text-4xl font-light;
+    @apply text-5xl font-normal;
   }
 
   .btn-primary {
-    @apply text-base bg-blue-600 text-white px-4 py-2  hover:bg-blue-700 font-medium transition-colors;
+    @apply text-lg bg-blue-600 text-white px-4 py-2  hover:bg-blue-700 font-normal transition-colors;
   }
 
   .btn-secondary {
-    @apply text-base bg-violet-600 text-white px-4 py-2  hover:bg-violet-700 font-medium transition-colors;
+    @apply text-lg bg-violet-600 text-white px-4 py-2  hover:bg-violet-700 font-normal transition-colors;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  p {
+    font-family: "Kanit", sans-serif;
+    @apply text-white;
+  }
+
+  p {
+    @apply text-base font-light;
   }
 }
 

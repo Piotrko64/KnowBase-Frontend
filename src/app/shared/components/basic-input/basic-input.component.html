@@ -1,0 +1,10 @@
+<div class="flex flex-col">
+  <label class="text-white text-lg" [for]="randomId">{{ label() }}</label>
+  <input
+    [type]="type()"
+    [placeholder]="placeholder()"
+    [(ngModel)]="value"
+    class="py-2 px-3 bg-zinc-600 text-white outline-none border-b-2 border-b-zinc-600 focus:border-b-white transition text-lg"
+    [id]="randomId"
+  />
+</div>

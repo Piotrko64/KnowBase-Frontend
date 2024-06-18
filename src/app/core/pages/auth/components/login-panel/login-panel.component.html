@@ -1,7 +1,32 @@
-<div class="h-full bg-slate-900 w-96 flex flex-col px-10">
-  <h2 class="text-white">PriceFlex</h2>
+<div class="h-full bg-slate-900 flex flex-col justify-center p-10 w-[540px]">
+  <h2 class="text-white mb-3">
+    Price<span class="font-extralight">Flex</span>
+  </h2>
+  <p class="text-white mb-6 text-lg">
+    Obserwuj ceny produktów na które polujesz w sklepach online!
+  </p>
+  <div>
+    <div class="flex text-white text-xl my-8">
+      <div
+        class="text-center p-2 py-3 w-full border-b-blue-600 border-b-4 text-blue-600 font-semibold bg-blue-600 bg-opacity-20 cursor-pointer"
+      >
+        Login
+      </div>
+      <div
+        class="text-center p-2 w-full border-b-gray-600 border-b-4 text-gray-600 cursor-pointer"
+      >
+        Register
+      </div>
+    </div>
+    <form class="flex gap-8 flex-col mb-8">
+      <shared-basic-input label="Email" />
+      <shared-basic-input label="Password" type="password" />
 
-  <button class="btn-primary">Primary test button</button>
-
-  <button class="btn-secondary">Primary test button</button>
+      <button class="btn-primary mt-3">Login</button>
+      <p class="text-center">
+        Nie masz konta?
+        <span class="text-blue-500"> Przełącz na Rejestracje </span>
+      </p>
+    </form>
+  </div>
 </div>
