@@ -9,7 +9,7 @@ import {
 @Component({
   selector: 'shared-basic-input',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './basic-input.component.html',
   styleUrl: './basic-input.component.scss',
   providers: [
@@ -39,7 +39,15 @@ export class BasicInputComponent implements ControlValueAccessor {
     }
   }
 
+  updateValue(event: Event): void {
+    const newValue = (event.target as HTMLInputElement).value;
+    this.value = newValue;
+    this.onChange(newValue);
+    this.onTouch();
+  }
+
   writeValue(x: any) {
+    console.info(x);
     this.valueInput = x;
   }
 
