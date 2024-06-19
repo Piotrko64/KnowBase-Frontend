@@ -1,6 +1,6 @@
 import { Component, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import { BasicInputComponent } from 'app/shared/components/basic-input/basic-input.component';
-import { AuthMode } from '../types/enums/AuthMode.enum';
+import { AuthMode } from '../../types/enums/AuthMode.enum';
 import { CommonModule, NgClass, NgFor } from '@angular/common';
 import {
   FormBuilder,
@@ -8,7 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { PASSWORD_REGEXP } from '../constants/passwordRegex';
+import { PASSWORD_REGEXP } from '../../constants/passwordRegex';
 
 @Component({
   selector: 'auth-login-panel',
