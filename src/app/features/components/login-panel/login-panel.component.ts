@@ -1,19 +1,18 @@
-import { Component, OnInit, signal, ViewEncapsulation } from '@angular/core';
-import { BasicInputComponent } from 'app/shared/components/basic-input/basic-input.component';
-import { AuthMode } from '../../types/enums/AuthMode.enum';
+import {
+  GoogleSigninButtonModule,
+  SocialAuthService,
+} from '@abacritt/angularx-social-login';
 import { CommonModule, NgClass, NgFor } from '@angular/common';
+import { Component, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { BasicInputComponent } from 'app/shared/components/basic-input/basic-input.component';
 import { PASSWORD_REGEXP } from '../../constants/passwordRegex';
-import {
-  GoogleSigninButtonModule,
-  SocialAuthService,
-} from '@abacritt/angularx-social-login';
-import { AuthService } from '@core/services/auth.service';
+import { AuthMode } from '../../types/enums/AuthMode.enum';
 
 @Component({
   selector: 'auth-login-panel',
@@ -50,7 +49,7 @@ export class LoginPanelComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: SocialAuthService
+    private authService: SocialAuthService,
   ) {}
 
   ngOnInit() {
