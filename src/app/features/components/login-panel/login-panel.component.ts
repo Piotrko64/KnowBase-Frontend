@@ -9,6 +9,11 @@ import {
   Validators,
 } from '@angular/forms';
 import { PASSWORD_REGEXP } from '../../constants/passwordRegex';
+import {
+  GoogleSigninButtonModule,
+  SocialAuthService,
+} from '@abacritt/angularx-social-login';
+import { AuthService } from '@core/services/auth.service';
 
 @Component({
   selector: 'auth-login-panel',
@@ -19,6 +24,7 @@ import { PASSWORD_REGEXP } from '../../constants/passwordRegex';
     NgFor,
     CommonModule,
     ReactiveFormsModule,
+    GoogleSigninButtonModule,
   ],
   templateUrl: './login-panel.component.html',
   styleUrl: './login-panel.component.scss',
@@ -38,9 +44,20 @@ export class LoginPanelComponent implements OnInit {
     this.selectedAuthMode.set(mode);
   }
 
-  constructor(private fb: FormBuilder) {}
+  // protected authViaGoogle() {
+  //   this.authService.loginViaGoogle();
+  // }
+
+  constructor(
+    private fb: FormBuilder,
+    private authService: SocialAuthService
+  ) {}
 
   ngOnInit() {
+    this.authService.authState.subscribe((e) => {
+      console.log(e);
+    });
+
     this.authForm = this.fb.group({
       email: this.fb.control('', [Validators.email, Validators.required]),
       password: this.fb.control('', [

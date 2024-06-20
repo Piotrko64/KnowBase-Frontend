@@ -6,7 +6,18 @@
     Obserwuj ceny produktów na które polujesz w sklepach online!
   </p>
   <div>
-    <div class="flex text-white text-xl my-8">
+    <div class="flex justify-center">
+      <asl-google-signin-button
+        type="standard"
+        size="large"
+        [width]="300"
+        text="continue_with"
+      ></asl-google-signin-button>
+    </div>
+
+    <div class="flex justify-center my-6 text-slate-400">OR</div>
+
+    <div class="flex text-white text-xl mb-8">
       <div
         *ngFor="let tab of authTabsData"
         class="text-center border-b-gray-600 border-b-4 text-gray-600 p-2 py-3 w-full cursor-pointer transition hover:bg-gray-800"
@@ -16,6 +27,7 @@
         {{ tab.title }}
       </div>
     </div>
+
     <form class="flex gap-8 flex-col mb-8" [formGroup]="authForm">
       <shared-basic-input label="Email" formControlName="email" />
       <div>
