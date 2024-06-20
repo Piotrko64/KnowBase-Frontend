@@ -4,12 +4,10 @@ import {
   provideZoneChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
 import {
   GoogleLoginProvider,
   SocialAuthServiceConfig,
-  SocialLoginModule,
 } from '@abacritt/angularx-social-login';
 import { environment } from 'environments/environment.development';
 
