@@ -46,7 +46,11 @@
             8 znaków) !
           </p>
         </div>
-        <button class="btn-primary mt-3" [disabled]="authForm.invalid">
+        <button
+          class="btn-primary mt-3"
+          [disabled]="authForm.invalid"
+          (click)="login()"
+        >
           {{ selectedAuthMode() === authModes.LOGIN ? "Login" : "Register" }}
         </button>
         <p *ngIf="selectedAuthMode() === authModes.LOGIN" class="text-center">

@@ -1,7 +1,4 @@
-import {
-  GoogleSigninButtonModule,
-  SocialAuthService,
-} from '@abacritt/angularx-social-login';
+import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { CommonModule, NgClass, NgFor } from '@angular/common';
 import { Component, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import {
@@ -10,6 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '@core/services/auth.service';
 import { BasicInputComponent } from 'app/shared/components/basic-input/basic-input.component';
 import { PASSWORD_REGEXP } from '../../constants/passwordRegex';
 import { AuthMode } from '../../types/enums/AuthMode.enum';
@@ -49,14 +47,14 @@ export class LoginPanelComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private authService: SocialAuthService,
+    private authService: AuthService,
   ) {}
 
-  ngOnInit() {
-    this.authService.authState.subscribe((e) => {
-      console.log(e);
-    });
+  login() {
+    this.authService.loginByEmailAndPassword('piotrko65@gmail.com', 'qw@SDS');
+  }
 
+  ngOnInit() {
     this.authForm = this.fb.group({
       email: this.fb.control('', [Validators.email, Validators.required]),
       password: this.fb.control('', [

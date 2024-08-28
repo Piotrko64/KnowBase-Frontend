@@ -1,16 +1,18 @@
 import {
-  ApplicationConfig,
-  importProvidersFrom,
-  provideZoneChangeDetection, isDevMode,
-} from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { routes } from './app.routes';
-import {
   GoogleLoginProvider,
   SocialAuthServiceConfig,
 } from '@abacritt/angularx-social-login';
-import { environment } from 'environments/environment.development';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import {
+  ApplicationConfig,
+  isDevMode,
+  provideZoneChangeDetection,
+} from '@angular/core';
+import { provideRouter } from '@angular/router';
 import { provideServiceWorker } from '@angular/service-worker';
+import { JwtInterceptor } from '@core/interceptors/jwtInterceptor';
+import { environment } from 'environments/environment.development';
+import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -32,9 +34,12 @@ export const appConfig: ApplicationConfig = {
           console.error(err);
         },
       } as SocialAuthServiceConfig,
-    }, provideServiceWorker('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            registrationStrategy: 'registerWhenStable:30000'
-          }),
+    },
+    provideServiceWorker('ngsw-worker.js', {
+      enabled: !isDevMode(),
+      registrationStrategy: 'registerWhenStable:30000',
+    }),
+
+    provideHttpClient(withInterceptors([JwtInterceptor])),
   ],
 };
