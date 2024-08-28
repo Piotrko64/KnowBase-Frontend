@@ -25,7 +25,8 @@
     "paths": {
       "@core/*": ["app/core/*"],
       "@shared/*": ["services/*"],
-      "@features/*": ["services/*"]
+      "@features/*": ["services/*"],
+      "@environments/*": ["environments/*"]
     }
   },
   "angularCompilerOptions": {
