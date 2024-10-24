@@ -28,7 +28,7 @@ export class AuthService {
     this.http
       .post<{
         token: string;
-      }>('http://localhost:5271/auth/login', { email, password })
+      }>('/api/auth/login', { email, password })
       .subscribe((value) => {
         this.accountValue.set({ token: value.token });
       });
@@ -41,7 +41,7 @@ export class AuthService {
   ) {
     this.http
       .post(
-        'http://localhost:5271/auth/register',
+        '/api/auth/register',
         {
           email,
           password,
