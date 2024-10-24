@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideServiceWorker } from '@angular/service-worker';
+import { ContentTypeInterceptor } from '@core/interceptors/contentTypeInterceptor';
 import { JwtInterceptor } from '@core/interceptors/jwtInterceptor';
 import { environment } from 'environments/environment.development';
 import { routes } from './app.routes';
@@ -40,6 +41,8 @@ export const appConfig: ApplicationConfig = {
       registrationStrategy: 'registerWhenStable:30000',
     }),
 
-    provideHttpClient(withInterceptors([JwtInterceptor])),
+    provideHttpClient(
+      withInterceptors([JwtInterceptor, ContentTypeInterceptor]),
+    ),
   ],
 };

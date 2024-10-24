@@ -29,6 +29,7 @@ import { AuthMode } from '../../types/enums/AuthMode.enum';
 })
 export class LoginPanelComponent implements OnInit {
   protected selectedAuthMode = signal(AuthMode.LOGIN);
+
   protected readonly authModes = AuthMode;
   protected readonly authTabsData = [
     { mode: AuthMode.LOGIN, title: 'Login' },
@@ -41,17 +42,25 @@ export class LoginPanelComponent implements OnInit {
     this.selectedAuthMode.set(mode);
   }
 
-  // protected authViaGoogle() {
-  //   this.authService.loginViaGoogle();
-  // }
-
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
   ) {}
 
   login() {
-    this.authService.loginByEmailAndPassword('piotrko65@gmail.com', 'qw@SDS');
+    const { email, password } = this.getFormValue();
+
+    this.authService.loginByEmailAndPassword(email, password);
+  }
+
+  register() {
+    const { email, password, confirmPassword } = this.getFormValue();
+
+    this.authService.registerByEmailAndPassword(
+      email,
+      password,
+      confirmPassword,
+    );
   }
 
   ngOnInit() {
@@ -61,6 +70,11 @@ export class LoginPanelComponent implements OnInit {
         Validators.required,
         Validators.pattern(PASSWORD_REGEXP),
       ]),
+      confirmPassword: this.fb.control('', [Validators.required]),
     });
+  }
+
+  private getFormValue() {
+    return this.authForm.value;
   }
 }

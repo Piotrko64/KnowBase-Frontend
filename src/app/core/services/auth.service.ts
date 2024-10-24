@@ -3,19 +3,17 @@ import {
   SocialAuthService,
 } from '@abacritt/angularx-social-login';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
 
 interface IAccountValue {
   token: string;
-  name: string;
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  public accountValue = new BehaviorSubject<IAccountValue | null>(null);
+  public accountValue = signal<IAccountValue | null>(null);
 
   constructor(
     private socialAuthService: SocialAuthService,
@@ -32,8 +30,27 @@ export class AuthService {
         token: string;
       }>('http://localhost:5271/auth/login', { email, password })
       .subscribe((value) => {
-        console.log(value.token);
-        this.accountValue.next({ name: '', token: value.token });
+        this.accountValue.set({ token: value.token });
+      });
+  }
+
+  public registerByEmailAndPassword(
+    email: string,
+    password: string,
+    confirmPassword: string,
+  ) {
+    this.http
+      .post(
+        'http://localhost:5271/auth/register',
+        {
+          email,
+          password,
+          confirmPassword,
+        },
+        { responseType: 'text' },
+      )
+      .subscribe((value) => {
+        console.log(value);
       });
   }
 }

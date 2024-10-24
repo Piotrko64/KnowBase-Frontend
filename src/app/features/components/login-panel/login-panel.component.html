@@ -35,6 +35,7 @@
             type="password"
             formControlName="password"
           />
+
           <p
             class="text-red-500 mt-2"
             *ngIf="
@@ -46,10 +47,19 @@
             8 znaków) !
           </p>
         </div>
+
+        @if (selectedAuthMode() === authModes.REGISTER) {
+          <shared-basic-input
+            label="Confirm password"
+            type="password"
+            formControlName="confirmPassword"
+          />
+        }
+
         <button
           class="btn-primary mt-3"
           [disabled]="authForm.invalid"
-          (click)="login()"
+          (click)="authModes.LOGIN ? login() : register()"
         >
           {{ selectedAuthMode() === authModes.LOGIN ? "Login" : "Register" }}
         </button>

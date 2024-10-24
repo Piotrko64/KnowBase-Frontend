@@ -14,8 +14,8 @@ export const JwtInterceptor: HttpInterceptorFn = (
 ): Observable<HttpEvent<any>> => {
   const accountService = inject(AuthService);
   const account = accountService?.accountValue;
-  const isLoggedIn = Boolean(account?.getValue());
-  const token = account?.getValue()?.token;
+  const isLoggedIn = Boolean(account());
+  const token = account()?.token;
 
   if (isLoggedIn && token) {
     request = request.clone({
