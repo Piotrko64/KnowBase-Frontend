@@ -70,7 +70,7 @@ export class LoginPanelComponent implements OnInit {
         Validators.required,
         Validators.pattern(PASSWORD_REGEXP),
       ]),
-      confirmPassword: this.fb.control('', [Validators.required]),
+      confirmPassword: this.fb.control(''),
     });
   }
 

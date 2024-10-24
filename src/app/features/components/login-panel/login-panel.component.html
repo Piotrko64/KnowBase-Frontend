@@ -56,10 +56,14 @@
           />
         }
 
+        {{ selectedAuthMode() }}
+
         <button
           class="btn-primary mt-3"
           [disabled]="authForm.invalid"
-          (click)="authModes.LOGIN ? login() : register()"
+          (click)="
+            selectedAuthMode() === authModes.LOGIN ? login() : register()
+          "
         >
           {{ selectedAuthMode() === authModes.LOGIN ? "Login" : "Register" }}
         </button>
