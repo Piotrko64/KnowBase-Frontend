@@ -47,7 +47,6 @@ export class BasicInputComponent implements ControlValueAccessor {
   }
 
   writeValue(x: any) {
-    console.info(x);
     this.valueInput = x;
   }
 
