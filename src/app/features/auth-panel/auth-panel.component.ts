@@ -9,11 +9,13 @@ import {
 } from '@angular/forms';
 import { AuthService } from '@core/services/auth.service';
 import { BasicInputComponent } from 'app/shared/components/basic-input/basic-input.component';
-import { PASSWORD_REGEXP } from '../../constants/passwordRegex';
-import { AuthMode } from '../../types/enums/AuthMode.enum';
+
+import { CustomTooltipDirective } from 'app/shared/directives/customTooltip/custom-tooltip.directive';
+import { PASSWORD_REGEXP } from './constants/passwordRegex';
+import { AuthMode } from './types/enums/AuthMode.enum';
 
 @Component({
-  selector: 'auth-login-panel',
+  selector: 'auth-panel',
   standalone: true,
   imports: [
     BasicInputComponent,
@@ -22,12 +24,13 @@ import { AuthMode } from '../../types/enums/AuthMode.enum';
     CommonModule,
     ReactiveFormsModule,
     GoogleSigninButtonModule,
+    CustomTooltipDirective,
   ],
-  templateUrl: './login-panel.component.html',
-  styleUrl: './login-panel.component.scss',
+  templateUrl: './auth-panel.component.html',
+  styleUrl: './auth-panel.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
-export class LoginPanelComponent implements OnInit {
+export class AuthPanelComponent implements OnInit {
   protected selectedAuthMode = signal(AuthMode.LOGIN);
 
   protected readonly authModes = AuthMode;

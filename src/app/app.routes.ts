@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { AuthComponent } from './core/pages/auth/auth.component';
+import { AuthPanelComponent } from './features/auth-panel/auth-panel.component';
 
 export const routes: Routes = [
   {
@@ -9,6 +9,6 @@ export const routes: Routes = [
   },
   {
     path: 'auth',
-    component: AuthComponent,
+    component: AuthPanelComponent,
   },
 ];
