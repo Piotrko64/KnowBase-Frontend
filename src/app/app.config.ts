@@ -10,8 +10,8 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideServiceWorker } from '@angular/service-worker';
-import { ContentTypeInterceptor } from '@core/interceptors/contentTypeInterceptor';
-import { JwtInterceptor } from '@core/interceptors/jwtInterceptor';
+import { ContentTypeInterceptor } from '@core/interceptors/content-type-interceptor';
+import { JwtInterceptor } from '@core/interceptors/jwt-interceptor';
 import { environment } from 'environments/environment.development';
 import { routes } from './app.routes';
 

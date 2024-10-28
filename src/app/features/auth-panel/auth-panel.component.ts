@@ -11,6 +11,8 @@ import { AuthService } from '@core/services/auth.service';
 import { BasicInputComponent } from 'app/shared/components/basic-input/basic-input.component';
 
 import { CustomTooltipDirective } from 'app/shared/directives/customTooltip/custom-tooltip.directive';
+import { switchToSelectedMode } from 'app/shared/helpers/change-theme/switch-to-selected-theme';
+import { ThemeOptions } from 'app/shared/types/enums/ThemeOptions.enum';
 import { PASSWORD_REGEXP } from './constants/passwordRegex';
 import { AuthMode } from './types/enums/AuthMode.enum';
 
@@ -42,21 +44,17 @@ export class AuthPanelComponent implements OnInit {
   protected authForm: FormGroup;
 
   protected switchMode(mode: AuthMode) {
+    switchToSelectedMode(ThemeOptions.DARK);
     this.selectedAuthMode.set(mode);
   }
 
-  constructor(
-    private fb: FormBuilder,
-    private authService: AuthService,
-  ) {}
-
-  login() {
+  protected login() {
     const { email, password } = this.getFormValue();
 
     this.authService.loginByEmailAndPassword(email, password);
   }
 
-  register() {
+  protected register() {
     const { email, password, confirmPassword } = this.getFormValue();
 
     this.authService.registerByEmailAndPassword(
@@ -65,6 +63,11 @@ export class AuthPanelComponent implements OnInit {
       confirmPassword,
     );
   }
+
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+  ) {}
 
   ngOnInit() {
     this.authForm = this.fb.group({

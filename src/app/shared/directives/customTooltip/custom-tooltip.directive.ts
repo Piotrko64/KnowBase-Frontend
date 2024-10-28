@@ -16,6 +16,7 @@ const HIDE_TOOLTIP_TIMEOUT = 300;
 export class CustomTooltipDirective {
   @Input('customTooltip') tooltipText: string = '';
   private tooltipElement: HTMLElement | null = null;
+  private isTooltipVisible: boolean = false;
 
   constructor(
     private el: ElementRef,
@@ -26,15 +27,21 @@ export class CustomTooltipDirective {
     this.showTooltip();
   }
 
+  @HostListener('click') onClick() {
+    this.removeTooltip();
+  }
+
   @HostListener('mouseleave') onMouseLeave() {
     this.removeTooltip();
   }
 
   private showTooltip() {
+    if (this.isTooltipVisible) return;
     this.tooltipElement = this.renderer.createElement('span');
-    this.renderer.appendChild(
+    this.renderer.setProperty(
       this.tooltipElement,
-      this.renderer.createText(this.tooltipText),
+      'innerHTML',
+      this.tooltipText,
     );
 
     this.renderer.appendChild(document.body, this.tooltipElement);
@@ -53,6 +60,8 @@ export class CustomTooltipDirective {
       `${left + width / 2}px`,
     );
 
+    this.isTooltipVisible = true;
+
     setTimeout(() => {
       if (this.tooltipElement) {
         this.renderer.addClass(this.tooltipElement, 'tooltip-show');
@@ -61,12 +70,16 @@ export class CustomTooltipDirective {
   }
 
   private removeTooltip() {
+    if (!this.isTooltipVisible) return;
+
     if (this.tooltipElement) {
       this.renderer.removeClass(this.tooltipElement, 'tooltip-show');
+
       setTimeout(() => {
         if (this.tooltipElement) {
           this.renderer.removeChild(document.body, this.tooltipElement);
           this.tooltipElement = null;
+          this.isTooltipVisible = false;
         }
       }, HIDE_TOOLTIP_TIMEOUT);
     }
