@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
-import { AuthPanelComponent } from './features/auth-panel/auth-panel.component';
+import { LayoutComponent } from '@core/layout/layout.component';
+import { AuthPanelComponent } from '@features/auth-panel/auth-panel.component';
+import { MainPanelComponent } from '@features/main-panel/main-panel.component';
 
 export const routes: Routes = [
   {
@@ -10,5 +12,10 @@ export const routes: Routes = [
   {
     path: 'auth',
     component: AuthPanelComponent,
+  },
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [{ path: 'main-panel', component: MainPanelComponent }],
   },
 ];
