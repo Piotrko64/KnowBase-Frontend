@@ -22,7 +22,8 @@
   h2,
   h3,
   h4,
-  p {
+  p,
+  .text-4xl {
     font-family: "Kanit", sans-serif;
     @apply text-white;
   }
