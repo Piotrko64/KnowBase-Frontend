@@ -47,10 +47,8 @@ jobs:
 
       - name: Display coverage
         run: |
-          cd coverage/know-base-frontend/index.html || exit 1
-
           echo "Coverage results:"
-          echo "Statements: $(grep -oP '(?<=Statements</span><span class="strong">)[^%]*%' index.html)"
-          echo "Branches: $(grep -oP '(?<=Branches</span><span class="strong">)[^%]*%' index.html)"
-          echo "Functions: $(grep -oP '(?<=Functions</span><span class="strong">)[^%]*%' index.html)"
-          echo "Lines: $(grep -oP '(?<=Lines</span><span class="strong">)[^%]*%' index.html)"
+          echo "Statements: $(grep -oP '(?<=Statements</span><span class="strong">)[^%]*%' coverage/know-base-frontend/index.html)"
+          echo "Branches: $(grep -oP '(?<=Branches</span><span class="strong">)[^%]*%' coverage/know-base-frontend/index.html)"
+          echo "Functions: $(grep -oP '(?<=Functions</span><span class="strong">)[^%]*%' coverage/know-base-frontend/index.html)"
+          echo "Lines: $(grep -oP '(?<=Lines</span><span class="strong">)[^%]*%' coverage/know-base-frontend/index.html)"
