@@ -48,7 +48,7 @@ jobs:
       - name: Display coverage
         run: |
           echo "Coverage results:"
-          echo "1. Statements: $(grep -oP '<span class="strong">(\d+\.\d+%) </span>' coverage/know-base-frontend/index.html | sed -E 's/<span class="strong">([0-9.]+%) <\/span>/\1/' | head -n 1p)"
-          echo "2. Branches: $(grep -oP '<span class="strong">(\d+\.\d+%) </span>' coverage/know-base-frontend/index.html | sed -E 's/<span class="strong">([0-9.]+%) <\/span>/\1/' | head -n 2p)"
-          echo "3. Functions: $(grep -oP '<span class="strong">(\d+\.\d+%) </span>' coverage/know-base-frontend/index.html | sed -E 's/<span class="strong">([0-9.]+%) <\/span>/\1/' | head -n 3p)"
-          echo "4. Lines: $(grep -oP '<span class="strong">(\d+\.\d+%) </span>' coverage/know-base-frontend/index.html | sed -E 's/<span class="strong">([0-9.]+%) <\/span>/\1/' | head -n 4p)"
+          echo "1. Statements: $(grep -oP '<span class="strong">(\d+\.\d+%) </span>' coverage/know-base-frontend/index.html | sed -E 's/<span class="strong">([0-9.]+%) <\/span>/\1/' | sed -n '1p')"
+          echo "2. Branches: $(grep -oP '<span class="strong">(\d+\.\d+%) </span>' coverage/know-base-frontend/index.html | sed -E 's/<span class="strong">([0-9.]+%) <\/span>/\1/' | sed -n '2p')"
+          echo "3. Functions: $(grep -oP '<span class="strong">(\d+\.\d+%) </span>' coverage/know-base-frontend/index.html | sed -E 's/<span class="strong">([0-9.]+%) <\/span>/\1/' | sed -n '3p')"
+          echo "4. Lines: $(grep -oP '<span class="strong">(\d+\.\d+%) </span>' coverage/know-base-frontend/index.html | sed -E 's/<span class="strong">([0-9.]+%) <\/span>/\1/' | sed -n '4p')"
