@@ -52,7 +52,7 @@ jobs:
           cat coverage/know-base-frontend/index.html
 
           echo "Coverage results:"
-          echo "Statements: $(grep -oP '<span class="strong">(\d+\.\d+%) </span>\s*<span class="quiet">Statements</span>' coverage/know-base-frontend/index.html)"
+          echo "Statements: $(grep -oP '<span class="strong">(\d+\.\d+%) </span>' coverage/know-base-frontend/index.html)"
           echo "Branches: $(grep -oP '(?<=Branches</span><span class="quiet">)[^<]*' coverage/know-base-frontend/index.html)"
           echo "Functions: $(grep -oP '(?<=Functions</span><span class="quiet">)[^<]*' coverage/know-base-frontend/index.html)"
           echo "Lines: $(grep -oP '(?<=Lines</span><span class="quiet">)[^<]*' coverage/know-base-frontend/index.html)"
