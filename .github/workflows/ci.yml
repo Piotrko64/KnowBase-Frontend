@@ -1,4 +1,4 @@
-name: CI for Angular App
+name: CI for KnowBase (Angular) App
 
 on:
   push:
@@ -75,10 +75,6 @@ jobs:
           name: coverage-report
           path: coverage/know-base-frontend/index.html
 
-  coverage-report:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
       - name: Check out repository
         uses: actions/checkout@v3
 
