@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-
+import {  signInWithRedirect } from 'aws-amplify/auth'
+import { CognitoUser } from 'amazon-cognito-identity-js'
+import { Amplify } from 'aws-amplify';
+import { Hub} from '@aws-amplify/core'
+import { SignUpInput, SignUpOutput, signUp } from 'aws-amplify/auth';
 interface IAccountValue {
   token: string;
 }
@@ -16,8 +20,12 @@ export class AuthService {
     private http: HttpClient,
   ) {}
 
-  public loginViaGoogle() {
-    // this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  public async loginViaGoogle() {
+
+await signInWithRedirect ({
+        provider: 'Google'
+      });
+    
   }
 
   public loginByEmailAndPassword(email: string, password: string) {
