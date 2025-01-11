@@ -1,4 +1,3 @@
-import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { CommonModule, NgClass, NgFor } from '@angular/common';
 import { Component, OnInit, signal, ViewEncapsulation } from '@angular/core';
 import {
@@ -25,7 +24,6 @@ import { AuthMode } from './types/enums/AuthMode.enum';
     NgFor,
     CommonModule,
     ReactiveFormsModule,
-    GoogleSigninButtonModule,
     CustomTooltipDirective,
   ],
   templateUrl: './auth-panel.component.html',
