@@ -1,7 +1,3 @@
-import {
-  GoogleLoginProvider,
-  SocialAuthService,
-} from '@abacritt/angularx-social-login';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 
@@ -16,12 +12,12 @@ export class AuthService {
   public accountValue = signal<IAccountValue | null>(null);
 
   constructor(
-    private socialAuthService: SocialAuthService,
+
     private http: HttpClient,
   ) {}
 
   public loginViaGoogle() {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    // this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
   }
 
   public loginByEmailAndPassword(email: string, password: string) {
