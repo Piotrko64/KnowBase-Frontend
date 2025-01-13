@@ -19,5 +19,18 @@
     <noscript
       >Please enable JavaScript to continue using this application.</noscript
     >
+    <script>
+      function decodeJWTToken(token){
+        return JSON.parse(atob(token.split(".")[1]))
+      }
+      function handleOauthResponse(response){
+        console.log(response);
+        const responsePayload = decodeJWTToken(response.credential)
+        console.log(responsePayload)
+        sessionStorage.setItem('loggedinUser',JSON.stringify(responsePayload))
+        window.location('/your-desired-place') 
+        //Changed the above URL where you want user to be redirected
+      }
+    </script>
   </body>
 </html>

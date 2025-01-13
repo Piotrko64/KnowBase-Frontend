@@ -14,6 +14,7 @@ import { switchToSelectedMode } from 'app/shared/helpers/change-theme/switch-to-
 import { ThemeOptions } from 'app/shared/types/enums/ThemeOptions.enum';
 import { PASSWORD_REGEXP } from './constants/passwordRegex';
 import { AuthMode } from './types/enums/AuthMode.enum';
+import { environment } from '@environments/environment';
 
 @Component({
   selector: 'auth-panel',
@@ -31,6 +32,9 @@ import { AuthMode } from './types/enums/AuthMode.enum';
   encapsulation: ViewEncapsulation.None,
 })
 export class AuthPanelComponent implements OnInit {
+  public GOOGLE_CLIENT_KEY = environment.GOOGLE_CLIENT_ID;
+  public REDIRECT_URI_FROM_GOOGLE_AUTH = environment.REDIRECT_URI_FROM_GOOGLE_AUTH;
+
   protected selectedAuthMode = signal(AuthMode.LOGIN);
 
   protected readonly authModes = AuthMode;
