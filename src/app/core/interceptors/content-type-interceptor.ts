@@ -9,9 +9,9 @@ import { Observable } from 'rxjs';
 const ALLOWED_CONTENT_TYPE = 'application/knowbase.api+json';
 
 export const ContentTypeInterceptor: HttpInterceptorFn = (
-  request: HttpRequest<any>,
+  request: HttpRequest<unknown>,
   next: HttpHandlerFn,
-): Observable<HttpEvent<any>> => {
+): Observable<HttpEvent<unknown>> => {
   request = request.clone({
     setHeaders: { 'Content-Type': ALLOWED_CONTENT_TYPE },
   });

@@ -8,7 +8,6 @@ import { provideRouter } from '@angular/router';
 import { provideServiceWorker } from '@angular/service-worker';
 import { ContentTypeInterceptor } from '@core/interceptors/content-type-interceptor';
 import { JwtInterceptor } from '@core/interceptors/jwt-interceptor';
-import { environment } from '@environments/environment';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {

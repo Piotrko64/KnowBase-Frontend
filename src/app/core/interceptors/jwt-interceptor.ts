@@ -9,9 +9,9 @@ import { AuthService } from '@core/services/auth.service';
 import { Observable } from 'rxjs';
 
 export const JwtInterceptor: HttpInterceptorFn = (
-  request: HttpRequest<any>,
+  request: HttpRequest<unknown>,
   next: HttpHandlerFn,
-): Observable<HttpEvent<any>> => {
+): Observable<HttpEvent<unknown>> => {
   const accountService = inject(AuthService);
   const account = accountService?.accountValue;
   const isLoggedIn = Boolean(account());

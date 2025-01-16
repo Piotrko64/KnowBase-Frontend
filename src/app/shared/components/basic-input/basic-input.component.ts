@@ -28,8 +28,8 @@ export class BasicInputComponent implements ControlValueAccessor {
   protected randomId = 'id-' + Math.random().toFixed(4);
 
   value: string;
-  onChange: any = () => {};
-  onTouch: any = () => {};
+  onChange = (val: unknown) => {};
+  onTouch = (val?: unknown) => {};
 
   set valueInput(val: string) {
     if (val !== undefined && this.value !== val) {
